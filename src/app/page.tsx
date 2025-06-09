@@ -1,103 +1,251 @@
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import Image from "next/image";
+import {
+  Plane,
+  Sparkles,
+  UserCheck,
+  LayoutDashboard,
+  Zap,
+  Target,
+  Clock,
+} from "lucide-react"; // Import icons, added Clock
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="flex flex-col min-h-screen bg-gradient-to-br from-background to-secondary/10">
+      {" "}
+      {/* Add subtle gradient */}
+      {/* Apply full-width styling similar to the footer, remove container mx-auto, add px */}
+      <header className="w-full px-4 md:px-6 py-6 md:py-8 flex justify-between items-center bg-muted/50">
+        {" "}
+        {/* Removed container mx-auto, added px */}
+        <Link
+          href="/"
+          className="flex items-center gap-2 text-xl md:text-2xl font-bold text-primary"
+        >
+          {" "}
+          {/* Adjusted text size */}
+          <Plane className="w-5 h-5 md:w-6 md:h-6" /> {/* Adjusted icon size */}
+          <span>TravelSynth</span>
+        </Link>
+        <nav>
+          <Link href="/auth/login">
+            {/* Use primary variant for the button to contrast with muted background */}
+            <Button variant="default" size="sm">
+              Login / Sign Up
+            </Button>{" "}
+            {/* Changed variant, Adjusted button size */}
+          </Link>
+        </nav>
+      </header>
+      {/* Hero Section - Updated to center content */}
+      <section className="flex-grow container mx-auto py-12 md:py-20 lg:py-24 flex flex-col items-center justify-center gap-10 md:gap-12 px-4 md:px-6 text-center">
+        {" "}
+        {/* Centered content, removed md:flex-row */}
+        <div className="w-full max-w-2xl">
+          {" "}
+          {/* Limit width and center */}
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6 leading-tight text-primary drop-shadow-sm">
+            {" "}
+            {/* Responsive text size */}
+            Craft Your Perfect Journey with AI
+          </h2>
+          <p className="text-base md:text-lg text-muted-foreground mb-8 md:mb-10">
+            {" "}
+            {/* Responsive text size */}
+            Let TravelSynth design personalized travel itineraries tailored to
+            your interests, budget, and style. Explore the world like never
+            before.
+          </p>
+          <Link href="/generate">
+            {/* Ensure the link points to the correct generation page */}
+            <Button
+              size="lg"
+              className="bg-accent text-accent-foreground hover:bg-accent/90 shadow-md hover:shadow-lg transition-shadow duration-200 w-full sm:w-auto"
+            >
+              {" "}
+              {/* Full width on small screens */}
+              Start Planning Your Trip
+            </Button>
+          </Link>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        {/* Image div removed */}
+      </section>
+      {/* Features Section */}
+      <section className="py-12 md:py-20 lg:py-24 bg-secondary/30">
+        {" "}
+        {/* Adjusted padding */}
+        <div className="container mx-auto px-4 md:px-6">
+          {" "}
+          {/* Added padding */}
+          <h2 className="text-2xl md:text-3xl font-bold text-center text-primary mb-10 md:mb-12">
+            Features Tailored for You
+          </h2>{" "}
+          {/* Responsive text size */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+            {" "}
+            {/* Responsive gap */}
+            <Card className="text-center shadow-lg hover:shadow-xl transition-shadow duration-300 bg-card p-4 md:p-6">
+              {" "}
+              {/* Added padding */}
+              <CardHeader className="p-0 mb-4">
+                {" "}
+                {/* Adjusted padding */}
+                <div className="mx-auto bg-primary/10 rounded-full p-3 w-fit mb-4">
+                  <Sparkles className="w-7 h-7 md:w-8 md:h-8 text-primary" />{" "}
+                  {/* Responsive icon size */}
+                </div>
+                <CardTitle className="text-lg md:text-xl text-primary">
+                  AI-Powered Itineraries
+                </CardTitle>{" "}
+                {/* Responsive text size */}
+              </CardHeader>
+              <CardContent className="text-muted-foreground text-sm md:text-base p-0">
+                {" "}
+                {/* Adjusted padding and text size */}
+                Get detailed, day-by-day travel plans generated by advanced AI,
+                complete with activity suggestions, timings, and notes.
+              </CardContent>
+            </Card>
+            <Card className="text-center shadow-lg hover:shadow-xl transition-shadow duration-300 bg-card p-4 md:p-6">
+              {" "}
+              {/* Added padding */}
+              <CardHeader className="p-0 mb-4">
+                {" "}
+                {/* Adjusted padding */}
+                <div className="mx-auto bg-primary/10 rounded-full p-3 w-fit mb-4">
+                  <UserCheck className="w-7 h-7 md:w-8 md:h-8 text-primary" />{" "}
+                  {/* Responsive icon size */}
+                </div>
+                <CardTitle className="text-lg md:text-xl text-primary">
+                  Personalized Planning
+                </CardTitle>{" "}
+                {/* Responsive text size */}
+              </CardHeader>
+              <CardContent className="text-muted-foreground text-sm md:text-base p-0">
+                {" "}
+                {/* Adjusted padding and text size */}
+                Input your destination, duration, interests (like history, food,
+                adventure), and budget level for a truly custom plan.
+              </CardContent>
+            </Card>
+            <Card className="text-center shadow-lg hover:shadow-xl transition-shadow duration-300 bg-card p-4 md:p-6">
+              {" "}
+              {/* Added padding */}
+              <CardHeader className="p-0 mb-4">
+                {" "}
+                {/* Adjusted padding */}
+                <div className="mx-auto bg-primary/10 rounded-full p-3 w-fit mb-4">
+                  <LayoutDashboard className="w-7 h-7 md:w-8 md:h-8 text-primary" />{" "}
+                  {/* Responsive icon size */}
+                </div>
+                <CardTitle className="text-lg md:text-xl text-primary">
+                  Plan Dashboard
+                </CardTitle>{" "}
+                {/* Responsive text size */}
+              </CardHeader>
+              <CardContent className="text-muted-foreground text-sm md:text-base p-0">
+                {" "}
+                {/* Adjusted padding and text size */}
+                Save and access all your generated travel plans in one
+                convenient dashboard, linked to your secure user account.
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+      {/* Why TravelSynth Section - Updated Styling to match Features */}
+      <section className="py-12 md:py-20 lg:py-24 bg-background">
+        {" "}
+        {/* Adjusted padding */}
+        <div className="container mx-auto px-4 md:px-6">
+          {" "}
+          {/* Added padding */}
+          <h2 className="text-2xl md:text-3xl font-bold text-center text-primary mb-10 md:mb-12">
+            Why Choose TravelSynth?
+          </h2>{" "}
+          {/* Responsive text size */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+            {" "}
+            {/* Responsive gap */}
+            {/* Card 1: Fast & Efficient */}
+            <Card className="text-center shadow-lg hover:shadow-xl transition-shadow duration-300 bg-card p-4 md:p-6">
+              {" "}
+              {/* Added padding */}
+              <CardHeader className="p-0 mb-4">
+                {" "}
+                {/* Adjusted padding */}
+                <div className="mx-auto bg-accent/10 rounded-full p-3 w-fit mb-4">
+                  <Zap className="w-7 h-7 md:w-8 md:h-8 text-accent" />{" "}
+                  {/* Responsive icon size */}
+                </div>
+                <CardTitle className="text-lg md:text-xl text-primary">
+                  Fast & Efficient
+                </CardTitle>{" "}
+                {/* Responsive text size */}
+              </CardHeader>
+              <CardContent className="text-muted-foreground text-sm md:text-base p-0">
+                {" "}
+                {/* Adjusted padding and text size */}
+                Stop spending hours researching. Get a comprehensive, detailed
+                itinerary in minutes, saving you valuable time and effort.
+              </CardContent>
+            </Card>
+            {/* Card 2: Deep Personalization */}
+            <Card className="text-center shadow-lg hover:shadow-xl transition-shadow duration-300 bg-card p-4 md:p-6">
+              {" "}
+              {/* Added padding */}
+              <CardHeader className="p-0 mb-4">
+                {" "}
+                {/* Adjusted padding */}
+                <div className="mx-auto bg-accent/10 rounded-full p-3 w-fit mb-4">
+                  <Target className="w-7 h-7 md:w-8 md:h-8 text-accent" />{" "}
+                  {/* Responsive icon size */}
+                </div>
+                <CardTitle className="text-lg md:text-xl text-primary">
+                  Deep Personalization
+                </CardTitle>{" "}
+                {/* Responsive text size */}
+              </CardHeader>
+              <CardContent className="text-muted-foreground text-sm md:text-base p-0">
+                {" "}
+                {/* Adjusted padding and text size */}
+                Unlike generic templates, TravelSynth's AI understands your
+                specific interests and budget to craft unique experiences just
+                for you.
+              </CardContent>
+            </Card>
+            {/* Card 3: Detailed & Actionable */}
+            <Card className="text-center shadow-lg hover:shadow-xl transition-shadow duration-300 bg-card p-4 md:p-6">
+              {" "}
+              {/* Added padding */}
+              <CardHeader className="p-0 mb-4">
+                {" "}
+                {/* Adjusted padding */}
+                <div className="mx-auto bg-accent/10 rounded-full p-3 w-fit mb-4">
+                  <Clock className="w-7 h-7 md:w-8 md:h-8 text-accent" />{" "}
+                  {/* Responsive icon size */}
+                </div>
+                <CardTitle className="text-lg md:text-xl text-primary">
+                  Detailed & Actionable
+                </CardTitle>{" "}
+                {/* Responsive text size */}
+              </CardHeader>
+              <CardContent className="text-muted-foreground text-sm md:text-base p-0">
+                {" "}
+                {/* Adjusted padding and text size */}
+                Receive more than just a list. Get estimated costs, booking info
+                suggestions, and even alternatives for activities within your
+                plan.
+              </CardContent>
+            </Card>
+          </div>
+          {/* Centered Button removed as per the style of the Features section */}
+        </div>
+      </section>
+      {/* Footer is automatically added by layout.tsx */}
     </div>
   );
 }

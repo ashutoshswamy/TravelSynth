@@ -1,26 +1,136 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* Poppins font is imported and applied via next/font/google in layout.tsx */
+/* @import url('...'); Removed */
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Palette: (Kept color definitions)
+       Background: Light beige (#F0EAD6) -> hsl(43, 44%, 90%)
+       Foreground: Dark contrast (using a darker shade of primary) -> hsl(141, 30%, 15%)
+       Primary: Earthy green (#386641) -> hsl(141, 30%, 31%)
+       Primary Foreground: Light contrast -> hsl(43, 44%, 98%)
+       Secondary: Slightly darker beige -> hsl(43, 30%, 85%)
+       Secondary Foreground: Primary green -> hsl(141, 30%, 31%)
+       Muted: Similar to secondary -> hsl(43, 30%, 85%)
+       Muted Foreground: Muted primary -> hsl(141, 20%, 45%)
+       Accent: Terracotta (#D4A373) -> hsl(32, 47%, 64%)
+       Accent Foreground: Dark contrast for accent -> hsl(32, 20%, 20%)
+       Destructive: Standard destructive
+       Border: Darker beige -> hsl(43, 30%, 80%)
+       Input: Similar to border -> hsl(43, 30%, 80%)
+       Ring: Accent (Terracotta) -> hsl(32, 47%, 64%)
+    */
+    --background: 43 44% 90%; /* Light beige */
+    --foreground: 141 30% 15%; /* Dark green */
+    --card: 43 44% 90%; /* Light beige */
+    --card-foreground: 141 30% 15%; /* Dark green */
+    --popover: 43 44% 90%; /* Light beige */
+    --popover-foreground: 141 30% 15%; /* Dark green */
+    --primary: 141 30% 31%; /* Earthy green */
+    --primary-foreground: 43 44% 98%; /* Very light beige */
+    --secondary: 43 30% 85%; /* Slightly darker beige */
+    --secondary-foreground: 141 30% 31%; /* Earthy green */
+    --muted: 43 30% 85%; /* Slightly darker beige */
+    --muted-foreground: 141 20% 45%; /* Muted green */
+    --accent: 32 47% 64%; /* Terracotta */
+    --accent-foreground: 32 20% 20%; /* Dark terracotta contrast */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 43 30% 80%; /* Darker beige */
+    --input: 43 30% 80%; /* Darker beige */
+    --ring: 32 47% 64%; /* Terracotta */
+    --chart-1: 141 30% 31%; /* Earthy green */
+    --chart-2: 32 47% 64%; /* Terracotta */
+    --chart-3: 141 20% 45%; /* Muted green */
+    --chart-4: 43 30% 80%; /* Darker beige */
+    --chart-5: 141 30% 15%; /* Dark green */
+    --radius: 0.5rem;
+    --sidebar-background: 43 30% 85%; /* Slightly darker beige */
+    --sidebar-foreground: 141 30% 15%; /* Dark green */
+    --sidebar-primary: 141 30% 31%; /* Earthy green */
+    --sidebar-primary-foreground: 43 44% 98%; /* Very light beige */
+    --sidebar-accent: 32 47% 64%; /* Terracotta */
+    --sidebar-accent-foreground: 32 20% 20%; /* Dark terracotta contrast */
+    --sidebar-border: 43 30% 80%; /* Darker beige */
+    --sidebar-ring: 32 47% 64%; /* Terracotta */
+  }
+
+  .dark {
+    /* Dark Theme Palette (adjust as needed, maintaining earthy/natural feel)
+       Background: Dark green-grey -> hsl(141, 10%, 20%)
+       Foreground: Light beige -> hsl(43, 44%, 90%)
+       Primary: Lighter earthy green -> hsl(141, 25%, 45%)
+       Accent: Muted Terracotta -> hsl(32, 35%, 55%)
+    */
+    --background: 141 10% 20%;
+    --foreground: 43 44% 90%;
+    --card: 141 10% 20%;
+    --card-foreground: 43 44% 90%;
+    --popover: 141 10% 20%;
+    --popover-foreground: 43 44% 90%;
+    --primary: 141 25% 45%;
+    --primary-foreground: 141 10% 95%;
+    --secondary: 141 10% 30%;
+    --secondary-foreground: 43 44% 90%;
+    --muted: 141 10% 30%;
+    --muted-foreground: 43 44% 70%;
+    --accent: 32 35% 55%;
+    --accent-foreground: 32 10% 15%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 141 10% 35%;
+    --input: 141 10% 35%;
+    --ring: 32 35% 55%;
+    --chart-1: 141 25% 45%;
+    --chart-2: 32 35% 55%;
+    --chart-3: 141 15% 60%;
+    --chart-4: 43 30% 70%;
+    --chart-5: 43 44% 90%;
+    --sidebar-background: 141 10% 25%;
+    --sidebar-foreground: 43 44% 90%;
+    --sidebar-primary: 141 25% 45%;
+    --sidebar-primary-foreground: 141 10% 95%;
+    --sidebar-accent: 32 35% 55%;
+    --sidebar-accent-foreground: 32 10% 15%;
+    --sidebar-border: 141 10% 35%;
+    --sidebar-ring: 32 35% 55%;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  html {
+    @apply h-full; /* Ensure html takes full height */
+    /* Font applied via variable in tailwind.config.ts */
+    font-family: var(--font-poppins), sans-serif;
+  }
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground min-h-full flex flex-col; /* Ensure body takes min full height and is flex column */
+    /* Font applied via html tag */
+  }
+  main {
+    @apply flex-grow; /* Make main content area grow */
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-semibold tracking-tight;
+  }
+  h1 {
+    @apply text-3xl;
+  }
+  h2 {
+    @apply text-2xl;
+  }
+  h3 {
+    @apply text-xl;
+  }
 }
